@@ -10,3 +10,4 @@ This is a project that recording my journey to practice LeetCode.
   - [27. Remove Element](./Array/27.Remove-Element/README.md)
   - [35. Search Insert Position](./Array/35.Search-Insert-Position/README.md)
   - [53. Maximum Subarray](./Array/53.Maximum-Subarray/README.md)
+  - [66. Plus One](./Array/66.Plus-One/README.md)
