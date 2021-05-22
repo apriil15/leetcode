@@ -13,3 +13,4 @@ This is a project that recording my journey to practice LeetCode.
   - [66. Plus One](./Array/66.Plus-One/README.md)
   - [88. Merge Sorted Array](./Array/88.Merge-Sorted-Array/README.md)
   - [118. Pascal's Triangle](./Array/118.Pascal's-Triangle/README.md)
+  - [119. Pascal's Triangle II](./Array/119.Pascal's-Triangle-II/README.md)
