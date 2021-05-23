@@ -14,3 +14,4 @@ This is a project that recording my journey to practice LeetCode.
   - [88. Merge Sorted Array](./Array/88.Merge-Sorted-Array/README.md)
   - [118. Pascal's Triangle](./Array/118.Pascal's-Triangle/README.md)
   - [119. Pascal's Triangle II](./Array/119.Pascal's-Triangle-II/README.md)
+  - [121. Best Time to Buy and Sell Stock](./Array/121.Best-Time-to-Buy-and-Sell-Stock/README.md)
