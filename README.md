@@ -23,5 +23,6 @@ This is a project that recording my journey to practice LeetCode.
   - [349. Intersection of Two Arrays](./Hash-Table/349.Intersection-of-Two-Arrays/README.md)
   - [409. Longest Palindrome](./Hash-Table/409.Longest-Palindrome/README.md)
   - [463. Island Perimeter](./Hash-Table/463.Island-Perimeter/README.md)
+  - [500. Keyboard Row](./Hash-Table/500.Keyboard-Row)
   - [771. Jewels and Stones](./Hash-Table/771.Jewels-and-Stones/README.md)
   - [1512. Number of Good Pairs](./Hash-Table/1512.Number-of-Good-Pairs/README.md)
