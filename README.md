@@ -32,4 +32,4 @@ This is a project that recording my journey to practice LeetCode.
 
 - String
 
-  - [13. Roman to Integer](./Hash-Table/13.Roman-to-Integer)
+  - [13. Roman to Integer](./String/13.Roman-to-Integer)
