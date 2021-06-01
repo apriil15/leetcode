@@ -18,6 +18,7 @@ This is a project that recording my journey to practice LeetCode.
   - [121. Best Time to Buy and Sell Stock](./Array/121.Best-Time-to-Buy-and-Sell-Stock/README.md)
 
 - Hash Table
+
   - [136. Single Number](./Hash-Table/136.Single-Number/README.md)
   - [202. Happy Number](./Hash-Table/202.Happy-Number/README.md)
   - [349. Intersection of Two Arrays](./Hash-Table/349.Intersection-of-Two-Arrays/README.md)
@@ -28,3 +29,7 @@ This is a project that recording my journey to practice LeetCode.
   - [690. Employee Importance](./Hash-Table/690.Employee-Importance)
   - [771. Jewels and Stones](./Hash-Table/771.Jewels-and-Stones/README.md)
   - [1512. Number of Good Pairs](./Hash-Table/1512.Number-of-Good-Pairs/README.md)
+
+- String
+
+  - [13. Roman to Integer](./Hash-Table/13.Roman-to-Integer)
