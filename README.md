@@ -33,3 +33,4 @@ This is a project that recording my journey to practice LeetCode.
 - String
 
   - [13. Roman to Integer](./String/13.Roman-to-Integer)
+  - [38. Count and Say](./String/38.Count-and-Say)
