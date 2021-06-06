@@ -36,4 +36,5 @@ This is a project that recording my journey to practice LeetCode.
   - [14. Longest Common Prefix](./String/14.Longest-Common-Prefix)
   - [20. Valid Parentheses](./String/20.Valid-Parentheses)
   - [38. Count and Say](./String/38.Count-and-Say)
+  - [67. Add Binary](./String/67.Add-Binary)
   - [415. Add Strings](./String/415.Add-Strings)
