@@ -38,3 +38,4 @@ This is a project that recording my journey to practice LeetCode.
   - [38. Count and Say](./String/38.Count-and-Say)
   - [67. Add Binary](./String/67.Add-Binary)
   - [415. Add Strings](./String/415.Add-Strings)
+  - [521. Longest Uncommon Subsequence I](./String/521.Longest-Uncommon-Subsequence-I)
