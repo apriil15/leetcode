@@ -32,6 +32,7 @@ This is a project that recording my journey to practice LeetCode.
 
 - String
 
+  - [3. Longest Substring Without Repeating Characters](./String/3.Longest-Substring-Without-Repeating-Characters)
   - [13. Roman to Integer](./String/13.Roman-to-Integer)
   - [14. Longest Common Prefix](./String/14.Longest-Common-Prefix)
   - [20. Valid Parentheses](./String/20.Valid-Parentheses)
