@@ -42,3 +42,7 @@ This is a project that recording my journey to practice LeetCode.
   - [521. Longest Uncommon Subsequence I](./String/521.Longest-Uncommon-Subsequence-I)
   - [541. Reverse String II](./String/541.Reverse-String-II)
   - [557. Reverse Words in a String III](./String/557.Reverse-Words-in-a-String-III)
+
+- Linked List
+
+  - [21. Merge Two Sorted Lists](./Linked-List/21.Merge-Two-Sorted-Lists)
