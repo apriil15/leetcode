@@ -46,3 +46,4 @@ This is a project that recording my journey to practice LeetCode.
 - Linked List
 
   - [21. Merge Two Sorted Lists](./Linked-List/21.Merge-Two-Sorted-Lists)
+  - [206. Reverse Linked List](./Linked-List/206.Reverse-Linked-List)
