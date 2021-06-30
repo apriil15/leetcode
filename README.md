@@ -47,6 +47,7 @@ This is a project that recording my journey to practice LeetCode.
 
   - [21. Merge Two Sorted Lists](./Linked-List/21.Merge-Two-Sorted-Lists)
   - [83. Remove Duplicates from Sorted List](./Linked-List/83.Remove-Duplicates-from-Sorted-List)
+  - [141. Linked List Cycle](./Linked-List/141.Linked-List-Cycle)
   - [203. Remove Linked List Elements](./Linked-List/203.Remove-Linked-List-Elements)
   - [206. Reverse Linked List](./Linked-List/206.Reverse-Linked-List)
   - [234. Palindrome Linked List](./Linked-List/234.Palindrome-Linked-List)
