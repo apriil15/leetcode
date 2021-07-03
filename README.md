@@ -47,6 +47,7 @@ This is a project that recording my journey to practice LeetCode.
 
   - [2. Add Two Numbers](./Linked-List/2.Add-Two-Numbers)
   - [21. Merge Two Sorted Lists](./Linked-List/21.Merge-Two-Sorted-Lists)
+  - [24. Swap Nodes in Pairs](./Linked-List/24.Swap-Nodes-in-Pairs)
   - [83. Remove Duplicates from Sorted List](./Linked-List/83.Remove-Duplicates-from-Sorted-List)
   - [141. Linked List Cycle](./Linked-List/141.Linked-List-Cycle)
   - [160. Intersection of Two Linked Lists](./Linked-List/160.Intersection-of-Two-Linked-Lists)
