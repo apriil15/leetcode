@@ -30,6 +30,10 @@ This is a project that recording my journey to practice LeetCode.
   - [771. Jewels and Stones](./Hash-Table/771.Jewels-and-Stones/README.md)
   - [1512. Number of Good Pairs](./Hash-Table/1512.Number-of-Good-Pairs/README.md)
 
+- Math
+
+  - [7. Reverse Integer](./Math/7. Reverse Integer)
+
 - String
 
   - [3. Longest Substring Without Repeating Characters](./String/3.Longest-Substring-Without-Repeating-Characters)
