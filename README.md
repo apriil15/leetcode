@@ -32,7 +32,7 @@ This is a project that recording my journey to practice LeetCode.
 
 - Math
 
-  - [7. Reverse Integer](./Math/7. Reverse Integer)
+  - [7. Reverse Integer](./Math/7.Reverse-Integer)
 
 - String
 
