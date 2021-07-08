@@ -35,6 +35,7 @@ This is a project that recording my journey to practice LeetCode.
   - [7. Reverse Integer](./Math/7.Reverse-Integer)
   - [9. Palindrome Number](./Math/9.Palindrome-Number)
   - [12. Integer to Roman](./Math/12.Integer-to-Roman)
+  - [43. Multiply Strings](./Math/43.Multiply-Strings)
   - [258. Add Digits](./Math/258.Add-Digits)
 
 - String
