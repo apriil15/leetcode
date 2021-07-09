@@ -37,6 +37,7 @@ This is a project that recording my journey to practice LeetCode.
   - [12. Integer to Roman](./Math/12.Integer-to-Roman)
   - [43. Multiply Strings](./Math/43.Multiply-Strings)
   - [258. Add Digits](./Math/258.Add-Digits)
+  - [754. Reach a Number](./Math/754.Reach-a-Number)
 
 - String
 
