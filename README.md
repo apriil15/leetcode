@@ -37,6 +37,7 @@ This is a project that recording my journey to practice LeetCode.
   - [12. Integer to Roman](./Math/12.Integer-to-Roman)
   - [43. Multiply Strings](./Math/43.Multiply-Strings)
   - [258. Add Digits](./Math/258.Add-Digits)
+  - [263. Ugly Number](./Math/263.Ugly-Number)
   - [357. Count Numbers with Unique Digits](./Math/357.Count-Numbers-with-Unique-Digits)
   - [372. Super Pow](./Math/372.Super-Pow)
   - [728. Self Dividing Numbers](./Math/728.Self-Dividing-Numbers)
