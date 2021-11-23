@@ -17,6 +17,10 @@ This is a project that recording my journey to practice LeetCode.
   - [119. Pascal's Triangle II](./Array/119.Pascal's-Triangle-II/README.md)
   - [121. Best Time to Buy and Sell Stock](./Array/121.Best-Time-to-Buy-and-Sell-Stock/README.md)
 
+- Binary Search
+
+  - [167. Two Sum II - Input Array Is Sorted](./Binary-Search/167.Two-Sum-II-Input-array-is-sorted)
+
 - Hash Table
 
   - [136. Single Number](./Hash-Table/136.Single-Number/README.md)
