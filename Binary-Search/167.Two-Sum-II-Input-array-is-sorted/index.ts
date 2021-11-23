@@ -1,3 +1,7 @@
+/**
+ * @link https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
+ */
+
 // time: O(n)
 // space: O(n)
 function twoSum_map(numbers: number[], target: number): number[] {
