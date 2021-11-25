@@ -38,4 +38,30 @@ function twoSum_twoPointers(numbers: number[], target: number): number[] {
   }
   throw new Error('')
 }
+
+// time: O(nlogn)
+// space: O(1)
+function twoSum_binarySearch(numbers: number[], target: number): number[] {
+  for (let index = 0; index < numbers.length; index++) {
+    const wanted = target - numbers[index]
+
+    let left = index + 1
+    let right = numbers.length - 1
+
+    while (left <= right) {
+      const mid = Math.ceil((left + right) / 2)
+
+      if (wanted === numbers[mid]) {
+        return [index + 1, mid + 1]
+      }
+      if (wanted > numbers[mid]) {
+        left = mid + 1
+      }
+      if (wanted < numbers[mid]) {
+        right = mid - 1
+      }
+    }
+  }
+
+  throw new Error('')
 }
