@@ -19,6 +19,7 @@ This is a project that recording my journey to practice LeetCode.
 
 - Binary Search
 
+  - [69. Sqrt(x)](./Binary-Search/69.Sqrt(x))
   - [167. Two Sum II - Input Array Is Sorted](./Binary-Search/167.Two-Sum-II-Input-array-is-sorted)
   - [287. Find the Duplicate Number](./Binary-Search/287.Find-the-Duplicate-Number)
   - [300. Longest Increasing Subsequence](./Binary-Search/300.Longest-Increasing-Subsequence)
