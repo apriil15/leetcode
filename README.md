@@ -23,6 +23,7 @@ This is a project that recording my journey to practice LeetCode.
   - [167. Two Sum II - Input Array Is Sorted](./Binary-Search/167.Two-Sum-II-Input-array-is-sorted)
   - [287. Find the Duplicate Number](./Binary-Search/287.Find-the-Duplicate-Number)
   - [300. Longest Increasing Subsequence](./Binary-Search/300.Longest-Increasing-Subsequence)
+  - [378. Kth Smallest Element in a Sorted Matrix](./Binary-Search/378.Kth-Smallest-Element-in-a-Sorted-Matrix)
   - [475. Heaters](./Binary-Search/475.Heaters)
   - [718. Maximum Length of Repeated Subarray](./Binary-Search/718.Maximum-Length-of-Repeated-Subarray)
 
