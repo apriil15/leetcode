@@ -4,3 +4,5 @@
   - bad solution, but work
   - i find i didn't really understand the question at all lol
   - still need to know how better solutions work
+- solution 2:
+  - first time use "range" binary search to solve question lol
