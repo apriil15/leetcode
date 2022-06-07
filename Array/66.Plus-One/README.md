@@ -13,6 +13,8 @@
 
 ## 解法
 
+### Go
+
 ```go
 package main
 
@@ -38,5 +40,26 @@ func plusOne(digits []int) []int {
 	newDigits := make([]int, len(digits)+1)
 	newDigits[0] = 1
 	return newDigits
+}
+```
+
+### TypeScript
+
+```typescript
+// time: O(n)
+// space: O(1) / O(n)
+function plusOne(digits: number[]): number[] {
+  const n = digits.length
+  for (let i = n - 1; i >= 0; i--) {
+    if (digits[i] < 9) {
+      digits[i]++
+      return digits
+    }
+    digits[i] = 0
+  }
+
+  // 99 -> 100
+  digits.unshift(1)
+  return digits
 }
 ```
