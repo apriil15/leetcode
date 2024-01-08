@@ -2,28 +2,42 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
 func main() {
-	s := "dvdf"
-	result := lengthOfLongestSubstring(s)
-	fmt.Println(result)
+	fmt.Println(lengthOfLongestSubstring("dvdf"))
 }
 
+// time: O(n)
+// space: O(n)
 func lengthOfLongestSubstring(s string) int {
-	max := 0
-	arr := []rune{}
+	if len(s) == 0 {
+		return 0
+	}
 
-	for _, r := range s {
-		for i := 0; i < len(arr); i++ {
-			if r == arr[i] {
-				arr = arr[i+1:]
-				break
+	set := make(map[byte]struct{})
+	left := 0
+
+	result := 0
+	for i := 0; i < len(s); i++ {
+		if _, ok := set[s[i]]; !ok {
+			set[s[i]] = struct{}{}
+		} else {
+			for {
+				if s[left] == s[i] {
+					left++
+					break
+				}
+
+				delete(set, s[left])
+				left++
 			}
 		}
-		arr = append(arr, r)
-		max = int(math.Max(float64(max), float64(len(arr))))
+
+		if len(set) > result {
+			result = len(set)
+		}
 	}
-	return max
+
+	return result
 }
