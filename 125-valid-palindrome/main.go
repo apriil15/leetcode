@@ -44,13 +44,7 @@ func isPalindrome(s string) bool {
 // A ~ Z -> 65 ~ 90
 // a ~ z -> 97 ~ 122
 func valid(b byte) bool {
-	if b >= 48 && b <= 57 {
-		return true
-	} else if b >= 65 && b <= 90 {
-		return true
-	} else if b >= 97 && b <= 122 {
-		return true
-	}
-
-	return false
+	return (b >= 48 && b <= 57) ||
+		(b >= 65 && b <= 90) ||
+		(b >= 97 && b <= 122)
 }
