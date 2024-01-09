@@ -17,22 +17,19 @@ func lengthOfLongestSubstring(s string) int {
 
 	set := make(map[byte]struct{})
 	left := 0
-
 	result := 0
-	for i := 0; i < len(s); i++ {
-		if _, ok := set[s[i]]; !ok {
-			set[s[i]] = struct{}{}
-		} else {
-			for {
-				if s[left] == s[i] {
-					left++
-					break
-				}
 
+	for i := 0; i < len(s); i++ {
+		for {
+			if _, ok := set[s[i]]; ok {
 				delete(set, s[left])
 				left++
+			} else {
+				break
 			}
 		}
+
+		set[s[i]] = struct{}{}
 
 		if len(set) > result {
 			result = len(set)
