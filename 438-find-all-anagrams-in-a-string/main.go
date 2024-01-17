@@ -5,43 +5,54 @@ func main() {
 }
 
 // time: O(n)
-// space: O(26)
+// space: O(26) -> O(1)
 func findAnagrams(s string, p string) []int {
 	if len(p) > len(s) {
 		return []int{}
 	}
 
-	pMap := make(map[byte]int, 26)
+	pCount := make(map[byte]int, 26)
 	for i := 0; i < len(p); i++ {
-		pMap[p[i]]++
+		pCount[p[i]]++
 	}
-
-	left := 0
-	sMap := make(map[byte]int, 26) // map for sliding window
 
 	result := []int{}
 
-	for i := 0; i < len(s); i++ {
-		if count, ok := pMap[s[i]]; !ok {
-			left = i + 1
-			sMap = make(map[byte]int, 26) // reset map
-		} else {
-			sMap[s[i]]++
+	// let sliding window size the same as input p
+	sCount := make(map[byte]int, 26) // char count of sliding window
+	for i := 0; i < len(p); i++ {
+		sCount[s[i]]++
+	}
+	if isTheSame(pCount, sCount) {
+		result = append(result, 0)
+	}
 
-			// shrink left pointer until count valid
-			for sMap[s[i]] > count {
-				sMap[s[left]]--
-				left++
-			}
+	// start to move sliding window
+	left := 0
+	for i := len(p); i < len(s); i++ {
+		sCount[s[left]]--
+		if sCount[s[left]] == 0 {
+			delete(sCount, s[left])
 		}
 
-		if i-left+1 == len(p) {
-			result = append(result, left)
+		left++
+		sCount[s[i]]++
 
-			sMap[s[left]]--
-			left++
+		if isTheSame(pCount, sCount) {
+			result = append(result, left)
 		}
 	}
 
 	return result
+}
+
+// time: O(26) -> O(1)
+func isTheSame(pCount, sCount map[byte]int) bool {
+	for b, count := range pCount {
+		if count != sCount[b] {
+			return false
+		}
+	}
+
+	return true
 }
