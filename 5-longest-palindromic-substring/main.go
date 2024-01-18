@@ -28,9 +28,9 @@ func longestPalindrome(s string) string {
 	}
 
 	// use adjacent as start point, move left & right pointer
-	for i := 0; i < len(s)-1; i++ {
-		left := i
-		right := i + 1
+	for i := 1; i < len(s); i++ {
+		left := i - 1
+		right := i
 
 		for left >= 0 && right <= len(s)-1 {
 			if s[left] != s[right] {
