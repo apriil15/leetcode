@@ -45,3 +45,16 @@ func missingNumber_set(nums []int) int {
 
 	return -1
 }
+
+// time: O(n)
+// space: O(1)
+func missingNumber_sum(nums []int) int {
+	total := (len(nums) + 1) * (0 + len(nums)) / 2
+
+	sum := 0
+	for _, num := range nums {
+		sum += num
+	}
+
+	return total - sum
+}
