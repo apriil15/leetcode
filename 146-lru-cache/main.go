@@ -6,10 +6,10 @@ func main() {
 
 type (
 	LRUCache struct {
-		capacity int
-		m        map[int]*Node
-		left     *Node // dummy node, LRU node would be left.next
-		right    *Node // dummy node
+		c    int
+		m    map[int]*Node
+		head *Node // dummy node, LRU node would be head.next
+		tail *Node // dummy node
 	}
 
 	Node struct {
@@ -21,41 +21,41 @@ type (
 )
 
 func Constructor(capacity int) LRUCache {
-	left := &Node{}
-	right := &Node{}
-	left.next = right
-	right.pre = left
+	head := &Node{}
+	tail := &Node{}
+	head.next = tail
+	tail.pre = head
 
 	return LRUCache{
-		capacity: capacity,
-		m:        map[int]*Node{},
-		left:     left,
-		right:    right,
+		c:    capacity,
+		m:    map[int]*Node{},
+		head: head,
+		tail: tail,
 	}
 }
 
 func (this *LRUCache) Get(key int) int {
-	if node, ok := this.m[key]; !ok {
-		return -1
-	} else {
-		this.remove(node)
-		this.insert(node)
+	if n, ok := this.m[key]; ok {
+		this.remove(n)
+		this.insert(n)
 
-		return node.value
+		return n.value
 	}
+
+	return -1
 }
 
 func (this *LRUCache) Put(key int, value int) {
-	if node, ok := this.m[key]; ok {
-		this.remove(node)
+	if n, ok := this.m[key]; ok {
+		this.remove(n)
 	}
 
 	n := &Node{key: key, value: value}
 	this.insert(n)
 	this.m[key] = n
 
-	if len(this.m) > this.capacity {
-		lru := this.left.next
+	if len(this.m) > this.c {
+		lru := this.head.next
 		this.remove(lru)
 		delete(this.m, lru.key)
 	}
@@ -69,13 +69,13 @@ func (this *LRUCache) remove(node *Node) {
 	next.pre = pre
 }
 
-// insert last (before right node)
+// insert insert last (before tail node)
 func (this *LRUCache) insert(node *Node) {
-	pre := this.right.pre
+	pre := this.tail.pre
 
 	pre.next = node
 	node.pre = pre
 
-	node.next = this.right
-	this.right.pre = node
+	node.next = this.tail
+	this.tail.pre = node
 }
