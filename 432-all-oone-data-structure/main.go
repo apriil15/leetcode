@@ -100,12 +100,7 @@ func (this *AllOne) Inc(key string) {
 	}
 	this.countToNode[1] = node
 
-	pre := this.tail.pre
-	pre.next = node
-	node.pre = pre
-
-	node.next = this.tail
-	this.tail.pre = node
+	this.insertLast(node)
 }
 
 func (this *AllOne) Dec(key string) {
@@ -134,4 +129,13 @@ func (this *AllOne) GetMinKey() string {
 	}
 
 	return ""
+}
+
+func (this *AllOne) insertLast(node *Node) {
+	pre := this.tail.pre
+	pre.next = node
+	node.pre = pre
+
+	node.next = this.tail
+	this.tail.pre = node
 }
