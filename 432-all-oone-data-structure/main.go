@@ -61,8 +61,7 @@ func (this *AllOne) Inc(key string) {
 			n.keys[key] = struct{}{}
 			this.keyToCount[key] = n.count
 
-			delete(keys, key)
-			if len(keys) == 0 {
+			if delete(keys, key); len(keys) == 0 {
 				delete(this.countToNode, count)
 				this.remove(node)
 			}
@@ -80,8 +79,7 @@ func (this *AllOne) Inc(key string) {
 
 		this.addAfter(n, node)
 
-		delete(keys, key)
-		if len(keys) == 0 {
+		if delete(keys, key); len(keys) == 0 {
 			delete(this.countToNode, count)
 			this.remove(node)
 		}
@@ -113,10 +111,10 @@ func (this *AllOne) Dec(key string) {
 
 	// 1 (N keys) -> tail
 	// 1 (1 key) -> tail
-	if count-1 == 0 {
+	if count == 1 {
 		delete(this.keyToCount, key)
-		delete(keys, key)
-		if len(keys) == 0 {
+
+		if delete(keys, key); len(keys) == 0 {
 			delete(this.countToNode, count)
 			this.remove(node)
 		}
@@ -126,13 +124,13 @@ func (this *AllOne) Dec(key string) {
 	// 4 (N keys) -> 3
 	// 4 (1 key) -> 3
 	if n, ok := this.countToNode[count-1]; ok {
-		delete(keys, key)
-		if len(keys) == 0 {
+		this.keyToCount[key]--
+		n.keys[key] = struct{}{}
+
+		if delete(keys, key); len(keys) == 0 {
 			delete(this.countToNode, count)
 			this.remove(node)
 		}
-		this.keyToCount[key] = count - 1
-		n.keys[key] = struct{}{}
 		return
 	}
 
@@ -143,36 +141,33 @@ func (this *AllOne) Dec(key string) {
 		keys:  map[string]struct{}{key: {}},
 	}
 	this.countToNode[n.count] = n
-	this.keyToCount[key] = n.count
+	this.keyToCount[key]--
 
 	this.addAfter2(node, n)
 
-	delete(keys, key)
-	if len(keys) == 0 {
+	if delete(keys, key); len(keys) == 0 {
 		delete(this.countToNode, count)
 		this.remove(node)
 	}
 }
 
 func (this *AllOne) GetMaxKey() string {
-	if this.head.next == this.tail {
-		return ""
-	}
-
-	for k := range this.head.next.keys {
-		return k
+	keys := this.head.next.keys
+	if len(keys) > 0 {
+		for key := range keys {
+			return key
+		}
 	}
 
 	return ""
 }
 
 func (this *AllOne) GetMinKey() string {
-	if this.head.next == this.tail {
-		return ""
-	}
-
-	for k := range this.tail.pre.keys {
-		return k
+	keys := this.tail.pre.keys
+	if len(keys) > 0 {
+		for key := range keys {
+			return key
+		}
 	}
 
 	return ""
