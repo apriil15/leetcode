@@ -13,6 +13,7 @@ func generateParenthesis(n int) []string {
 	var recursion func(open int, close int, str string)
 
 	recursion = func(open int, close int, str string) {
+		// base case
 		if open == n && open == close {
 			result = append(result, str)
 			return
