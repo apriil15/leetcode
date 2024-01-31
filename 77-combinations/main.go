@@ -22,8 +22,8 @@ func combine(n int, k int) [][]int {
 
 		for i := start; i <= n; i++ {
 			comb = append(comb, i)
-			backtrack(i+1, comb)
-			comb = comb[:len(comb)-1]
+			backtrack(i+1, comb)      // go to next layer
+			comb = comb[:len(comb)-1] // back
 		}
 	}
 
