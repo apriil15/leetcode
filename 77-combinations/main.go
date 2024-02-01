@@ -18,6 +18,7 @@ func combine(n int, k int) [][]int {
 			dest = append(dest, comb...)
 
 			result = append(result, dest)
+			return
 		}
 
 		for i := start; i <= n; i++ {
