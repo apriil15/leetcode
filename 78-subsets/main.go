@@ -6,6 +6,13 @@ func main() {
 	fmt.Println(subsets([]int{1, 2, 3}))
 }
 
+//                     *
+//             /       |      \
+//            1        2       3
+//         /    \      |
+//       1,2    1,3   2,3
+//       /
+//    1,2,3
 func subsets(nums []int) [][]int {
 	result := [][]int{{}}
 
