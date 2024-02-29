@@ -13,6 +13,14 @@ type ListNode struct {
 	Next *ListNode
 }
 
+// each iterate
+// 1 -> 2 -> 3 -> 4 -> 5
+// 1    2 -> 3 -> 4 -> 5
+// 1 <- 2    3 -> 4 -> 5
+// 1 <- 2 <- 3    4 -> 5
+// 1 <- 2 <- 3 <- 4    5
+// 1 <- 2 <- 3 <- 4 <- 5
+
 // time: O(n)
 // space: O(1)
 func reverseList(head *ListNode) *ListNode {
@@ -35,10 +43,25 @@ func reverseList(head *ListNode) *ListNode {
 	return result
 }
 
-// each iterate
-// 1 -> 2 -> 3 -> 4 -> 5
-// 1    2 -> 3 -> 4 -> 5
-// 1 <- 2    3 -> 4 -> 5
-// 1 <- 2 <- 3    4 -> 5
-// 1 <- 2 <- 3 <- 4    5
-// 1 <- 2 <- 3 <- 4 <- 5
+// time: O(n)
+// space: O(n)
+func reverseList_recursion(head *ListNode) *ListNode {
+	var result *ListNode
+	current := head
+
+	return recursion(result, current)
+}
+
+func recursion(result, current *ListNode) *ListNode {
+	if current == nil {
+		return result
+	}
+
+	next := current.Next
+	current.Next = result
+
+	result = current
+	current = next
+
+	return recursion(result, current)
+}
