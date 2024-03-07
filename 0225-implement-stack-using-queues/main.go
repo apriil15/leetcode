@@ -17,9 +17,28 @@ func (this *MyStack) Push(x int) {
 	this.s = append(this.s, x)
 }
 
+// time: O(n)
+//
+// move first to last
+//
+//	1, 2, 3, 4
+//	   2, 3, 4, 1
+//	      3, 4, 1, 2
+//
+// remove first
+//
+//	4, 1, 2, 3
+//	   1, 2, 3
 func (this *MyStack) Pop() int {
-	result := this.s[len(this.s)-1]
-	this.s = this.s[:len(this.s)-1]
+	// move first to last n-1 times
+	for i := 0; i < len(this.s)-1; i++ {
+		first := this.s[0]
+		this.s = append(this.s[1:], first)
+	}
+
+	// still one time
+	result := this.s[0]
+	this.s = this.s[1:]
 
 	return result
 }
