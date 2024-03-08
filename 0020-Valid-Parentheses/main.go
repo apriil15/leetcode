@@ -9,20 +9,21 @@ func main() {
 func isValid(s string) bool {
 	stack := make([]byte, 0)
 
-	m := map[byte]byte{
+	closeToOpen := map[byte]byte{
 		')': '(',
 		']': '[',
 		'}': '{',
 	}
 
 	for i := 0; i < len(s); i++ {
-		if isOpenBracket(s[i]) {
-			stack = append(stack, s[i])
+		b := s[i]
+		if isOpenBracket(b) {
+			stack = append(stack, b)
 			continue
 		}
 
-		if len(stack) > 0 && stack[len(stack)-1] == m[s[i]] {
-			stack = stack[0 : len(stack)-1] // pop last one
+		if len(stack) > 0 && stack[len(stack)-1] == closeToOpen[b] {
+			stack = stack[:len(stack)-1] // pop last one
 		} else {
 			return false
 		}
