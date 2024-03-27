@@ -73,6 +73,47 @@ func maxDepth_dfs_stack(root *TreeNode) int {
 	return result
 }
 
+// BFS (queue)
+// time: O(n)
+// space: O(n)
+func maxDepth_bfs(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+
+	queue := []Node{
+		{
+			node:  root,
+			level: 1,
+		},
+	}
+
+	result := 1
+	for len(queue) > 0 {
+		// pop first
+		first := queue[0]
+		queue = queue[1:]
+
+		result = max(result, first.level)
+
+		if first.node.Left != nil {
+			queue = append(queue, Node{
+				node:  first.node.Left,
+				level: first.level + 1,
+			})
+		}
+
+		if first.node.Right != nil {
+			queue = append(queue, Node{
+				node:  first.node.Right,
+				level: first.level + 1,
+			})
+		}
+	}
+
+	return result
+}
+
 func max(a, b int) int {
 	if a > b {
 		return a
