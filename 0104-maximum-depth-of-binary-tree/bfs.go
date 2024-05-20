@@ -42,6 +42,7 @@ func maxDepth_bfs(root *TreeNode) int {
 	return result
 }
 
+// This one should be better.
 // iterate each level, then level++
 func maxDepth_bfs2(root *TreeNode) int {
 	if root == nil {
