@@ -10,7 +10,7 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-// recursion
+// recursion (bottom up)
 // time: O(n)
 // space: O(n)
 func invertTree(root *TreeNode) *TreeNode {
