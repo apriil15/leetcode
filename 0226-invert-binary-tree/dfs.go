@@ -11,6 +11,7 @@ func invertTree_dfs(root *TreeNode) *TreeNode {
 	stack := []*TreeNode{root}
 
 	for len(stack) > 0 {
+		// pop last
 		last := stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
 
