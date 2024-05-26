@@ -21,14 +21,14 @@ func isBalanced(root *TreeNode) bool {
 			return 0
 		}
 
-		leftMax := maxDepth(root.Left)
-		rightMax := maxDepth(root.Right)
+		left := maxDepth(root.Left)
+		right := maxDepth(root.Right)
 
-		if math.Abs(float64(leftMax-rightMax)) > 1 {
+		if math.Abs(float64(left-right)) > 1 {
 			result = false
 		}
 
-		return max(leftMax, rightMax) + 1
+		return max(left, right) + 1
 	}
 
 	maxDepth(root)
