@@ -11,7 +11,7 @@ type TreeNode struct {
 }
 
 // time: O(log n)
-// space: O(depth of n)
+// space: O(depth of root)
 func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 	if p.Val < root.Val && q.Val < root.Val {
 		return lowestCommonAncestor(root.Left, p, q)
