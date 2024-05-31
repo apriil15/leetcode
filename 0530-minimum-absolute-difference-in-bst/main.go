@@ -23,8 +23,8 @@ func getMinimumDifference(root *TreeNode) int {
 		inOrder(root.Left)
 
 		if previous != nil {
-			abs := int(math.Abs(float64(root.Val) - float64(*previous)))
-			result = min(result, abs)
+			diff := root.Val - *previous
+			result = min(result, diff)
 		}
 
 		previous = &root.Val
