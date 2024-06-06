@@ -7,14 +7,10 @@ func lowestCommonAncestor_iterative(root, p, q *TreeNode) *TreeNode {
 	for {
 		if p.Val < root.Val && q.Val < root.Val {
 			root = root.Left
-			continue
-		}
-
-		if p.Val > root.Val && q.Val > root.Val {
+		} else if p.Val > root.Val && q.Val > root.Val {
 			root = root.Right
-			continue
+		} else {
+			return root
 		}
-
-		return root
 	}
 }
