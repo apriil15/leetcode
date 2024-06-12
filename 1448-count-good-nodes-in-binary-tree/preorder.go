@@ -8,9 +8,10 @@ package main
  *     Right *TreeNode
  * }
  */
-// preorder
+// preorder: root left right
+// recursive
 // time: O(n)
-// space: O(h)
+// space: O(h), O(log n)
 func goodNodes_preorder(root *TreeNode) int {
 	var res int
 
