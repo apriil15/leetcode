@@ -10,14 +10,15 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+// iterative
 // time: O(n)
-// space: O(n)
+// space: O(h), O(log n)
 func goodNodes(root *TreeNode) int {
 	var res int
 	stack := []Node{
 		{
-			TreeNode: root,
-			Max:      root.Val,
+			node:     root,
+			maxValue: root.Val,
 		},
 	}
 
@@ -25,23 +26,22 @@ func goodNodes(root *TreeNode) int {
 		last := stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
 
-		cur := last.Max
-
-		if last.TreeNode.Val >= last.Max {
-			cur = last.TreeNode.Val
+		if last.node.Val >= last.maxValue {
 			res++
 		}
 
-		if last.TreeNode.Left != nil {
+		maxValue := max(last.node.Val, last.maxValue)
+
+		if last.node.Left != nil {
 			stack = append(stack, Node{
-				TreeNode: last.TreeNode.Left,
-				Max:      cur,
+				node:     last.node.Left,
+				maxValue: maxValue,
 			})
 		}
-		if last.TreeNode.Right != nil {
+		if last.node.Right != nil {
 			stack = append(stack, Node{
-				TreeNode: last.TreeNode.Right,
-				Max:      cur,
+				node:     last.node.Right,
+				maxValue: maxValue,
 			})
 		}
 	}
@@ -50,6 +50,6 @@ func goodNodes(root *TreeNode) int {
 }
 
 type Node struct {
-	TreeNode *TreeNode
-	Max      int
+	node     *TreeNode
+	maxValue int
 }
