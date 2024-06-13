@@ -15,7 +15,6 @@ import "math"
 // time: O(n)
 // space: O(h)
 func isValidBST_iterative(root *TreeNode) bool {
-	res := true
 	stack := []*TreeNode{}
 	cur := root
 	curMax := math.MinInt
@@ -38,5 +37,5 @@ func isValidBST_iterative(root *TreeNode) bool {
 		cur = cur.Right
 	}
 
-	return res
+	return true
 }
