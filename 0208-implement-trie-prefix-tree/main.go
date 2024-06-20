@@ -13,7 +13,6 @@ type TrieNode struct {
 	isEndOfWord bool
 }
 
-/** Initialize your data structure here. */
 func Constructor() Trie {
 	return Trie{
 		root: NewTrieNode(),
@@ -27,7 +26,6 @@ func NewTrieNode() *TrieNode {
 	}
 }
 
-/** Inserts a word into the trie. */
 func (this *Trie) Insert(word string) {
 	node := this.root
 	for _, char := range word {
@@ -39,7 +37,6 @@ func (this *Trie) Insert(word string) {
 	node.isEndOfWord = true
 }
 
-/** Returns if the word is in the trie. */
 func (this *Trie) Search(word string) bool {
 	node := this.root
 	for _, char := range word {
@@ -51,7 +48,6 @@ func (this *Trie) Search(word string) bool {
 	return node.isEndOfWord
 }
 
-/** Returns if there is any word in the trie that starts with the given prefix. */
 func (this *Trie) StartsWith(prefix string) bool {
 	node := this.root
 	for _, char := range prefix {
