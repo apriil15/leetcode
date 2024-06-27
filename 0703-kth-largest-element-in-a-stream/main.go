@@ -18,12 +18,11 @@ type KthLargest struct {
 	k       int
 }
 
-func asc(a, b any) int {
-	return cmp.Compare(a.(int), b.(int))
-}
-
 func Constructor(k int, nums []int) KthLargest {
-	minHeap := priorityqueue.NewWith(asc)
+	minHeap := priorityqueue.NewWith(func(a, b any) int {
+		return cmp.Compare(a.(int), b.(int))
+	})
+
 	for _, v := range nums {
 		minHeap.Enqueue(v)
 		if minHeap.Size() > k {
