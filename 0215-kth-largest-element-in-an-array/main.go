@@ -11,7 +11,7 @@ func main() {
 }
 
 // minHeap with k count
-// time: O((n log n)
+// time: O((n log k)
 // space: O(k)
 func findKthLargest(nums []int, k int) int {
 	minHeap := priorityqueue.NewWith(func(a, b any) int {
