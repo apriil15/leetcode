@@ -73,6 +73,8 @@ func (this *Twitter) GetNewsFeed(userID int) []int {
 	}
 
 	var res []int
+
+	// merge k sorted array
 	for maxHeap.Size() > 0 && len(res) < 10 {
 		tmp, _ := maxHeap.Dequeue()
 		node := tmp.(Node)
