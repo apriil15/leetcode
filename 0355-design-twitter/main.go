@@ -12,7 +12,7 @@ func main() {
 
 type Twitter struct {
 	timestamp           int                      // a global timestamp to mark every tweet's timestamp
-	userIDToFolloweeIDs map[int]map[int]struct{} // use set, so that it would be better for [Twitter.Unfollow]
+	userIDToFollowIDSet map[int]map[int]struct{} // use set, so that it would be better for [Twitter.Unfollow]
 	userIDToTweets      map[int][]Tweet
 }
 
@@ -21,18 +21,10 @@ type Tweet struct {
 	id        int
 }
 
-// Node for maxHeap usage in [Twitter.GetNewsFeed]
-type Node struct {
-	timestamp  int
-	tweetID    int
-	followeeID int
-	nextIndex  int
-}
-
 func Constructor() Twitter {
 	return Twitter{
 		timestamp:           0,
-		userIDToFolloweeIDs: make(map[int]map[int]struct{}),
+		userIDToFollowIDSet: make(map[int]map[int]struct{}),
 		userIDToTweets:      make(map[int][]Tweet),
 	}
 }
@@ -47,34 +39,39 @@ func (this *Twitter) PostTweet(userID int, tweetID int) {
 }
 
 func (this *Twitter) GetNewsFeed(userID int) []int {
+	// follow myself, so that I can get my feed
 	this.Follow(userID, userID)
 
-	// Enqueue each followee's last tweet
+	type Node struct {
+		timestamp int
+		tweetID   int
+		followID  int
+		nextIndex int
+	}
 	maxHeap := priorityqueue.NewWith(func(a, b any) int {
-		aa := a.(Node)
-		bb := b.(Node)
-		return -cmp.Compare(aa.timestamp, bb.timestamp)
+		return -cmp.Compare(a.(Node).timestamp, b.(Node).timestamp)
 	})
-	for followeeID := range this.userIDToFolloweeIDs[userID] {
-		tweets := this.userIDToTweets[followeeID]
+
+	for followID := range this.userIDToFollowIDSet[userID] {
+		tweets := this.userIDToTweets[followID]
 		if len(tweets) == 0 {
 			continue
 		}
 
+		// Enqueue each follow's last tweet
 		lastIndex := len(tweets) - 1
 		lastTweet := tweets[lastIndex]
 
 		maxHeap.Enqueue(Node{
-			timestamp:  lastTweet.timestamp,
-			tweetID:    lastTweet.id,
-			followeeID: followeeID,
-			nextIndex:  lastIndex - 1,
+			timestamp: lastTweet.timestamp,
+			tweetID:   lastTweet.id,
+			followID:  followID,
+			nextIndex: lastIndex - 1,
 		})
 	}
 
-	var res []int
-
 	// merge k sorted array
+	var res []int
 	for maxHeap.Size() > 0 && len(res) < 10 {
 		tmp, _ := maxHeap.Dequeue()
 		node := tmp.(Node)
@@ -82,13 +79,13 @@ func (this *Twitter) GetNewsFeed(userID int) []int {
 		res = append(res, node.tweetID)
 
 		if node.nextIndex >= 0 {
-			tweet := this.userIDToTweets[node.followeeID][node.nextIndex]
+			tweet := this.userIDToTweets[node.followID][node.nextIndex]
 
 			maxHeap.Enqueue(Node{
-				timestamp:  tweet.timestamp,
-				tweetID:    tweet.id,
-				followeeID: node.followeeID,
-				nextIndex:  node.nextIndex - 1,
+				timestamp: tweet.timestamp,
+				tweetID:   tweet.id,
+				followID:  node.followID,
+				nextIndex: node.nextIndex - 1,
 			})
 		}
 	}
@@ -96,14 +93,14 @@ func (this *Twitter) GetNewsFeed(userID int) []int {
 }
 
 func (this *Twitter) Follow(followerID int, followeeID int) {
-	if this.userIDToFolloweeIDs[followerID] == nil {
-		this.userIDToFolloweeIDs[followerID] = make(map[int]struct{})
+	if this.userIDToFollowIDSet[followerID] == nil {
+		this.userIDToFollowIDSet[followerID] = make(map[int]struct{})
 	}
-	this.userIDToFolloweeIDs[followerID][followeeID] = struct{}{}
+	this.userIDToFollowIDSet[followerID][followeeID] = struct{}{}
 }
 
 func (this *Twitter) Unfollow(followerID int, followeeID int) {
-	delete(this.userIDToFolloweeIDs[followerID], followeeID)
+	delete(this.userIDToFollowIDSet[followerID], followeeID)
 }
 
 /**
