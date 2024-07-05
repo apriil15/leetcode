@@ -14,27 +14,27 @@ func main() {
 //       /
 //    1,2,3
 func subsets(nums []int) [][]int {
-	result := [][]int{{}}
+	res := [][]int{{}}
 
 	var recursion func(start int, sub []int)
-	recursion = func(start int, sub []int) {
+	recursion = func(start int, subset []int) {
 		for i := start; i < len(nums); i++ {
-			sub = append(sub, nums[i])
+			subset = append(subset, nums[i])
 
-			// copy sub to dest
-			dest := make([]int, 0, len(sub))
-			dest = append(dest, sub...)
+			// copy subset to dest
+			dest := make([]int, 0, len(subset))
+			dest = append(dest, subset...)
 
-			result = append(result, dest)
+			res = append(res, dest)
 
-			recursion(i+1, sub) // go to next layer
+			recursion(i+1, subset) // go to next layer
 
-			sub = sub[:len(sub)-1]
+			subset = subset[:len(subset)-1]
 		}
 	}
 
 	recursion(0, []int{})
-	return result
+	return res
 }
 
 //                    *
