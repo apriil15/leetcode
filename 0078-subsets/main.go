@@ -48,19 +48,21 @@ func subsets_2(nums []int) [][]int {
 	var subset []int
 
 	var backtrack func(i int)
-	backtrack = func(start int) {
-		if start == len(nums) {
+	backtrack = func(i int) {
+		if i == len(nums) {
 			dest := make([]int, len(subset))
 			copy(dest, subset)
 			res = append(res, dest)
 			return
 		}
 
-		subset = append(subset, nums[start])
-		backtrack(start + 1)
+		// go left
+		subset = append(subset, nums[i])
+		backtrack(i + 1)
 
+		// go right
 		subset = subset[:len(subset)-1]
-		backtrack(start + 1)
+		backtrack(i + 1)
 	}
 
 	backtrack(0)
