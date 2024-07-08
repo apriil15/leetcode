@@ -79,9 +79,9 @@ func subsets_3(nums []int) [][]int {
 
 	var backtrack func(start int)
 	backtrack = func(start int) {
-		tmp := make([]int, len(subset))
-		copy(tmp, subset)
-		res = append(res, tmp)
+		dest := make([]int, len(subset))
+		copy(dest, subset)
+		res = append(res, dest)
 
 		for i := start; i < len(nums); i++ {
 			subset = append(subset, nums[i])
