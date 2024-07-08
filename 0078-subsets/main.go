@@ -15,24 +15,24 @@ func main() {
 //    1,2,3
 func subsets_1(nums []int) [][]int {
 	res := [][]int{{}}
+	var subset []int
 
-	var recursion func(start int, sub []int)
-	recursion = func(start int, subset []int) {
+	var backtrack func(start int)
+	backtrack = func(start int) {
 		for i := start; i < len(nums); i++ {
 			subset = append(subset, nums[i])
 
-			// copy subset to dest
 			dest := make([]int, len(subset))
 			copy(dest, subset)
 			res = append(res, dest)
 
-			recursion(i+1, subset) // go to next layer
+			backtrack(i + 1)
 
 			subset = subset[:len(subset)-1]
 		}
 	}
 
-	recursion(0, []int{})
+	backtrack(0)
 	return res
 }
 
@@ -67,8 +67,7 @@ func subsets_2(nums []int) [][]int {
 	return result
 }
 
-// this solution is like the first one,
-// but append [] in the backtrack(), and treat subset as a global variable
+// this solution is like the first one, but append [] in the backtrack()
 //
 // time: O(n * 2^n)
 // space: O(n * 2^n)
