@@ -44,27 +44,27 @@ func subsets_1(nums []int) [][]int {
 //    /   \      /  \   /  \    / \   add 3 or not
 // 1,2,3  1,2  1,3  1  2,3  2  3  []
 func subsets_2(nums []int) [][]int {
-	result := [][]int{}
+	var res [][]int
+	var subset []int
 
-	var dfs func(i int, sub []int)
-	dfs = func(i int, sub []int) {
-		if i == len(nums) {
-			dest := make([]int, 0, len(sub))
-			dest = append(dest, sub...)
-
-			result = append(result, dest)
+	var backtrack func(i int)
+	backtrack = func(start int) {
+		if start == len(nums) {
+			dest := make([]int, len(subset))
+			copy(dest, subset)
+			res = append(res, dest)
 			return
 		}
 
-		sub = append(sub, nums[i])
-		dfs(i+1, sub)
+		subset = append(subset, nums[start])
+		backtrack(start + 1)
 
-		sub = sub[:len(sub)-1]
-		dfs(i+1, sub)
+		subset = subset[:len(subset)-1]
+		backtrack(start + 1)
 	}
 
-	dfs(0, []int{})
-	return result
+	backtrack(0)
+	return res
 }
 
 // this solution is like the first one, but append [] in the backtrack()
