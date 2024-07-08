@@ -1,5 +1,7 @@
 package main
 
+import "slices"
+
 /**
  * Definition for a binary tree node.
  * type TreeNode struct {
@@ -14,13 +16,13 @@ func postorderTraversal_iterative(root *TreeNode) []int {
 		return nil
 	}
 
-	var tmp []int
+	var res []int
 	stack := []*TreeNode{root}
 	for len(stack) > 0 {
 		last := stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
 
-		tmp = append(tmp, last.Val)
+		res = append(res, last.Val)
 
 		// like preorder, but opposite
 		if last.Left != nil {
@@ -31,11 +33,7 @@ func postorderTraversal_iterative(root *TreeNode) []int {
 		}
 	}
 
-	// reverse
-	var res []int
-	for i := len(tmp) - 1; i >= 0; i-- {
-		res = append(res, tmp[i])
-	}
+	slices.Reverse(res)
 
 	return res
 }
