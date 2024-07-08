@@ -22,9 +22,8 @@ func subsets_1(nums []int) [][]int {
 			subset = append(subset, nums[i])
 
 			// copy subset to dest
-			dest := make([]int, 0, len(subset))
-			dest = append(dest, subset...)
-
+			dest := make([]int, len(subset))
+			copy(dest, subset)
 			res = append(res, dest)
 
 			recursion(i+1, subset) // go to next layer
