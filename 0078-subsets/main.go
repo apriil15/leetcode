@@ -14,7 +14,9 @@ func main() {
 //       /
 //    1,2,3
 func subsets_1(nums []int) [][]int {
-	res := [][]int{{}}
+	res := [][]int{
+		{},
+	}
 	var subset []int
 
 	var backtrack func(start int)
