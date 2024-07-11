@@ -16,7 +16,7 @@ func main() {
 func permute(nums []int) [][]int {
 	var res [][]int
 	var per []int
-	seen := make(map[int]struct{})
+	seen := make(map[int]struct{}) // seen index
 
 	var backtrack func()
 	backtrack = func() {
