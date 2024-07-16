@@ -11,8 +11,6 @@ func exist(board [][]byte, word string) bool {
 
 	path := make(map[point]struct{})
 
-	var res bool
-
 	var backtrack func(r, c, i int) bool
 	backtrack = func(r, c, i int) bool {
 		if i == len(word) { // already traverse entire word
@@ -32,7 +30,7 @@ func exist(board [][]byte, word string) bool {
 		path[point{row: r, column: c}] = struct{}{}
 
 		// backtrack up, down, left, right
-		res = backtrack(r+1, c, i+1) ||
+		res := backtrack(r+1, c, i+1) ||
 			backtrack(r-1, c, i+1) ||
 			backtrack(r, c+1, i+1) ||
 			backtrack(r, c-1, i+1)
