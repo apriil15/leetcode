@@ -40,6 +40,7 @@ func exist(board [][]byte, word string) bool {
 		return res
 	}
 
+	// traverse each point
 	for i := 0; i < rows; i++ {
 		for j := 0; j < columns; j++ {
 			if backtrack(i, j, 0) {
