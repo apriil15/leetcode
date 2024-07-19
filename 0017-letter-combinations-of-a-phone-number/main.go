@@ -6,7 +6,18 @@ func main() {
 
 func letterCombinations(digits string) []string {
 	if len(digits) == 0 {
-		return []string{}
+		return nil
+	}
+
+	digitToLetters := map[byte][]string{
+		'2': {"a", "b", "c"},
+		'3': {"d", "e", "f"},
+		'4': {"g", "h", "i"},
+		'5': {"j", "k", "l"},
+		'6': {"m", "n", "o"},
+		'7': {"p", "q", "r", "s"},
+		'8': {"t", "u", "v"},
+		'9': {"w", "x", "y", "z"},
 	}
 
 	var res []string
@@ -19,8 +30,8 @@ func letterCombinations(digits string) []string {
 			return
 		}
 
-		for _, str := range digitToLetters(digits[i]) {
-			comb += str
+		for _, char := range digitToLetters[digits[i]] {
+			comb += char
 			backtrack(i + 1)
 			comb = comb[:len(comb)-1]
 		}
@@ -28,32 +39,4 @@ func letterCombinations(digits string) []string {
 
 	backtrack(0)
 	return res
-}
-
-func digitToLetters(char byte) []string {
-	if char == '2' {
-		return []string{"a", "b", "c"}
-	}
-	if char == '3' {
-		return []string{"d", "e", "f"}
-	}
-	if char == '4' {
-		return []string{"g", "h", "i"}
-	}
-	if char == '5' {
-		return []string{"j", "k", "l"}
-	}
-	if char == '6' {
-		return []string{"m", "n", "o"}
-	}
-	if char == '7' {
-		return []string{"p", "q", "r", "s"}
-	}
-	if char == '8' {
-		return []string{"t", "u", "v"}
-	}
-	if char == '9' {
-		return []string{"w", "x", "y", "z"}
-	}
-	return []string{}
 }
