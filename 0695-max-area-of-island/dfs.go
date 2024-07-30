@@ -1,11 +1,6 @@
 package main
 
-func main() {
-
-}
-
-// BFS
-func maxAreaOfIsland(grid [][]int) int {
+func maxAreaOfIsland_dfs(grid [][]int) int {
 	rows := len(grid)
 	cols := len(grid[0])
 	visit := make(map[point]struct{})
@@ -13,13 +8,13 @@ func maxAreaOfIsland(grid [][]int) int {
 
 	var dfs func(i, j int) int
 	dfs = func(i, j int) int {
-		queue := []point{{i, j}}
+		stack := []point{{i, j}}
 		visit[point{i, j}] = struct{}{}
 		count := 1
 
-		for len(queue) > 0 {
-			cur := queue[0]
-			queue = queue[1:]
+		for len(stack) > 0 {
+			cur := stack[len(stack)-1]
+			stack = stack[:len(stack)-1]
 
 			for _, dir := range dirs {
 				row := cur.row + dir.row
@@ -35,7 +30,7 @@ func maxAreaOfIsland(grid [][]int) int {
 					continue
 				}
 
-				queue = append(queue, point{row, col})
+				stack = append(stack, point{row, col})
 				visit[point{row, col}] = struct{}{}
 				count++
 			}
@@ -55,9 +50,4 @@ func maxAreaOfIsland(grid [][]int) int {
 	}
 
 	return res
-}
-
-type point struct {
-	row int
-	col int
 }
