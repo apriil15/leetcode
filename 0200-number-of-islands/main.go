@@ -6,11 +6,11 @@ func main() {
 
 func numIslands(grid [][]byte) int {
 	rows := len(grid)
-	columns := len(grid[0])
+	cols := len(grid[0])
 
 	var dfs func(i, j int)
 	dfs = func(i, j int) {
-		if i < 0 || j < 0 || i >= rows || j >= columns {
+		if i < 0 || j < 0 || i >= rows || j >= cols {
 			return
 		}
 		if grid[i][j] == '0' {
@@ -29,7 +29,7 @@ func numIslands(grid [][]byte) int {
 
 	var res int
 	for i := 0; i < rows; i++ {
-		for j := 0; j < columns; j++ {
+		for j := 0; j < cols; j++ {
 			if grid[i][j] == '1' {
 				res++
 				dfs(i, j)
