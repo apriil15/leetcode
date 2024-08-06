@@ -28,49 +28,44 @@ func wallsAndGates(rooms [][]int) {
 	cols := len(rooms[0])
 
 	type point struct {
-		x int
-		y int
+		row int
+		col int
 	}
-	queue := []point{}
 	visit := make(map[point]struct{})
-
+	q := []point{}
 	for i := 0; i < rows; i++ {
 		for j := 0; j < cols; j++ {
 			if rooms[i][j] == 0 {
-				queue = append(queue, point{i, j})
+				q = append(q, point{i, j})
 				visit[point{i, j}] = struct{}{}
 			}
 		}
 	}
 
-	addRoom := func(i, j int) {
-		if i < 0 || j < 0 || i >= rows || j >= cols {
-			return
-		}
-		if _, ok := visit[point{i, j}]; ok {
-			return
-		}
-		if rooms[i][j] == -1 {
-			return
-		}
-
-		queue = append(queue, point{i, j})
-		visit[point{i, j}] = struct{}{}
-	}
-
 	dist := 0
-	for len(queue) > 0 {
-		length := len(queue)
+	dirs := []point{{1, 0}, {-1, 0}, {0, 1}, {0, -1}}
+	for len(q) > 0 {
+		length := len(q)
 		for i := 0; i < length; i++ {
-			cur := queue[0]
-			queue = queue[1:]
+			cur := q[0]
+			q = q[1:]
 
-			rooms[cur.x][cur.y] = dist
+			rooms[cur.row][cur.col] = dist
 
-			addRoom(cur.x+1, cur.y)
-			addRoom(cur.x-1, cur.y)
-			addRoom(cur.x, cur.y+1)
-			addRoom(cur.x, cur.y-1)
+			for _, dir := range dirs {
+				row := cur.row + dir.row
+				col := cur.col + dir.col
+				if row < 0 || col < 0 || row >= rows || col >= cols ||
+					rooms[row][col] == -1 {
+					continue
+				}
+				if _, ok := visit[point{row, col}]; ok {
+					continue
+				}
+
+				q = append(q, point{row, col})
+				visit[point{row, col}] = struct{}{}
+			}
 		}
 		dist++
 	}
