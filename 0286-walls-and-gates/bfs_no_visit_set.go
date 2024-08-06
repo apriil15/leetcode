@@ -5,37 +5,33 @@ func wallsAndGates_no_visit_set(rooms [][]int) {
 	cols := len(rooms[0])
 
 	type point struct {
-		x int
-		y int
+		row int
+		col int
 	}
-	queue := []point{}
+	q := []point{}
 	for i := 0; i < rows; i++ {
 		for j := 0; j < cols; j++ {
 			if rooms[i][j] == 0 {
-				queue = append(queue, point{i, j})
+				q = append(q, point{i, j})
 			}
 		}
 	}
 
-	directions := []point{
-		{0, 1},
-		{0, -1},
-		{1, 0},
-		{-1, 0},
-	}
-	for len(queue) > 0 {
-		cur := queue[0]
-		queue = queue[1:]
+	dirs := []point{{0, 1}, {0, -1}, {1, 0}, {-1, 0}}
+	for len(q) > 0 {
+		cur := q[0]
+		q = q[1:]
 
-		for _, dir := range directions {
-			x, y := cur.x+dir.x, cur.y+dir.y
-			if x < 0 || y < 0 || x >= rows || y >= cols ||
-				rooms[x][y] != 2147483647 {
+		for _, dir := range dirs {
+			row := cur.row + dir.row
+			col := cur.col + dir.col
+			if row < 0 || col < 0 || row >= rows || col >= cols ||
+				rooms[row][col] != 2147483647 {
 				continue
 			}
 
-			rooms[x][y] = rooms[cur.x][cur.y] + 1
-			queue = append(queue, point{x, y})
+			rooms[row][col] = rooms[cur.row][cur.col] + 1
+			q = append(q, point{row, col})
 		}
 	}
 }
