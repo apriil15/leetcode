@@ -33,7 +33,7 @@ func solve(board [][]byte) {
 		dfs(i, j-1, set)
 	}
 
-	// find 'O' from corner
+	// find 'O' from 4 corner
 	for i := 0; i < rows; i++ {
 		dfs(i, 0, set)
 		dfs(i, cols-1, set)
