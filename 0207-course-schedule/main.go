@@ -15,24 +15,24 @@ func canFinish(numCourses int, prerequisites [][]int) bool {
 		courseToPres[row] = append(courseToPres[row], col)
 	}
 
-	visit := make(map[int]struct{})
+	cycle := make(map[int]struct{})
 
 	var dfs func(course int) bool
 	dfs = func(course int) bool {
-		if _, ok := visit[course]; ok { // prevent cycle
+		if _, ok := cycle[course]; ok {
 			return false
 		}
 		if len(courseToPres[course]) == 0 {
 			return true
 		}
 
-		visit[course] = struct{}{}
+		cycle[course] = struct{}{}
 		for _, pre := range courseToPres[course] {
 			if !dfs(pre) {
 				return false
 			}
 		}
-		delete(visit, course)
+		delete(cycle, course)
 		courseToPres[course] = nil
 
 		return true
