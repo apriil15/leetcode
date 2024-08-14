@@ -7,10 +7,8 @@ func main() {
 // time: O(V+E)
 func findOrder(numCourses int, prerequisites [][]int) []int {
 	courseToPres := make(map[int][]int) // adjacency list
-	for i := 0; i < len(prerequisites); i++ {
-		row := prerequisites[i][0]
-		col := prerequisites[i][1]
-		courseToPres[row] = append(courseToPres[row], col)
+	for _, pre := range prerequisites {
+		courseToPres[pre[0]] = append(courseToPres[pre[0]], pre[1])
 	}
 
 	cycle := make(map[int]struct{}) // cycle detect in each dfs
