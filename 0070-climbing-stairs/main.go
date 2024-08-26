@@ -11,22 +11,18 @@ func climbStairs(n int) int {
 	// n = 2 -> 2
 	// n = 3 -> 3
 	// n = 4 -> 5
-	if n == 1 {
-		return 1
-	}
-	if n == 2 {
-		return 2
+	if n == 1 || n == 2 {
+		return n
 	}
 
 	first := 1
 	second := 2
 
-	var sum int
+	var res int
 	for i := 3; i <= n; i++ {
-		sum = first + second
-
+		res = first + second
 		first = second
-		second = sum
+		second = res
 	}
-	return sum
+	return res
 }
