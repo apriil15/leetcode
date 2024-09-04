@@ -47,7 +47,7 @@ func numDecodings(s string) int {
 	var decode2 int = 1
 	for i := 1; i < len(s); i++ {
 		includeLastOne := s[i-1 : i+1]
-		thisOne := s[i : i+1]
+		thisOne := s[i : i+1] // exclude last one
 		_, ok1 := m[includeLastOne]
 		_, ok2 := m[thisOne]
 		if !ok1 && !ok2 {
