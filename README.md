@@ -4,5 +4,5 @@ This is a project that recording my journey to practice [LeetCode](https://leetc
 
 Learning resources:
 
-- https://neetcode.io/
-- https://www.techinterviewhandbook.org/
+- https://neetcode.io
+- https://www.techinterviewhandbook.org
