@@ -6,10 +6,9 @@ func main() {
 
 }
 
-// https://leetcode.com/problems/valid-anagram/description/
 // time: O(s+t)
 // space: O(1)
-func isAnagram_map(s string, t string) bool {
+func isAnagram_1map(s string, t string) bool {
 	if len(s) != len(t) {
 		return false
 	}
@@ -58,5 +57,35 @@ func isAnagram_sort(s string, t string) bool {
 		}
 	}
 
+	return true
+}
+
+// time: O(len(s)+len(t))
+// space: O(52) -> O(1)
+func isAnagram_2map(s string, t string) bool {
+	if len(s) != len(t) {
+		return false
+	}
+
+	// map of char count
+	m1 := make(map[rune]int, 26)
+	for _, char := range s {
+		m1[char]++
+	}
+
+	m2 := make(map[rune]int, 26)
+	for _, char := range t {
+		m2[char]++
+	}
+
+	for char, count := range m1 {
+		c, ok := m2[char]
+		if !ok {
+			return false
+		}
+		if count != c {
+			return false
+		}
+	}
 	return true
 }
