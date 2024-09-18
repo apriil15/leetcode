@@ -1,35 +1,30 @@
 package main
 
-import "sort"
+import "slices"
 
 func main() {
 
 }
 
+// sort solution
 // time: O(n * nlogn)
 // space: O(n)
 func groupAnagrams_normal(strs []string) [][]string {
 	m := make(map[string][]string)
 
 	for _, str := range strs {
-		bs := []byte(str)
-		sort.Slice(bs, func(i, j int) bool {
-			return bs[i] < bs[j]
-		})
+		b := []byte(str)
+		slices.Sort(b)
+		sortStr := string(b)
 
-		if _, ok := m[string(bs)]; ok {
-			m[string(bs)] = append(m[string(bs)], str)
-		} else {
-			m[string(bs)] = []string{str}
-		}
+		m[sortStr] = append(m[sortStr], str)
 	}
 
-	result := make([][]string, 0, len(m))
+	res := make([][]string, 0, len(m))
 	for _, v := range m {
-		result = append(result, v)
+		res = append(res, v)
 	}
-
-	return result
+	return res
 }
 
 // time: O(m*n) (m: len(strs), n: len(str[i]))
