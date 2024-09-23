@@ -1,50 +1,42 @@
 package main
 
 import (
-	"fmt"
 	"strconv"
 )
 
 func main() {
-	input := []string{"hello", "world", "i", "am", "apriil"}
+
+}
+
+func encodeAndDecode(input []string) []string {
 	e := encode(input)
-	fmt.Println(e) // 5#hello 5#world 1#i 2#am 6#apriil
-
-	output := decode(e)
-	fmt.Println(output)
+	return decode(e)
 }
 
+// encode with delimiter: len(s)#
 func encode(strs []string) string {
-	result := ""
+	var res string
 	for _, str := range strs {
-		result += strconv.Itoa(len(str)) + "#" + str
+		res += strconv.Itoa(len(str)) + "#" + str
 	}
-
-	return result
+	return res
 }
 
-// 5#hello 5#world 1#i 2#am 6#apriil
 func decode(str string) []string {
-	result := []string{}
-
+	var res []string
+	var strLength string
 	for i := 0; i < len(str); i++ {
-		// find str length
-		strLength := ""
-		for string(str[i]) != "#" {
-			strLength += string(str[i])
-			i++
-		}
-		length, _ := strconv.Atoi(strLength)
+		if string(str[i]) == "#" {
+			length, _ := strconv.Atoi(strLength)
+			s := str[i+1 : i+1+length]
 
-		// use str length to count str
-		tmpStr := ""
-		for j := 0; j < length; j++ {
-			i++
-			tmpStr += string(str[i])
-		}
+			res = append(res, s)
 
-		result = append(result, tmpStr)
+			i += length
+			strLength = ""
+			continue
+		}
+		strLength += string(str[i])
 	}
-
-	return result
+	return res
 }
