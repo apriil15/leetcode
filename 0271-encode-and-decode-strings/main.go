@@ -34,9 +34,9 @@ func decode(str string) []string {
 
 			i += length
 			strLength = ""
-			continue
+		} else {
+			strLength += string(str[i])
 		}
-		strLength += string(str[i])
 	}
 	return res
 }
