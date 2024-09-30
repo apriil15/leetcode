@@ -9,42 +9,35 @@ func main() {
 }
 
 // time: O(n)
-// space: O(n)
+// space: O(1)
 func isPalindrome(s string) bool {
-	if len(s) == 1 {
-		return true
-	}
-
-	bs := []byte(strings.ToLower(s))
+	s = strings.ToLower(s)
 
 	left := 0
-	right := len(bs) - 1
+	right := len(s) - 1
 	for left < right {
-		if !valid(bs[left]) {
+		if !isValid(s[left]) {
 			left++
 			continue
 		}
-		if !valid(bs[right]) {
+		if !isValid(s[right]) {
 			right--
 			continue
 		}
 
-		if bs[left] != bs[right] {
+		if s[left] != s[right] {
 			return false
 		}
-
 		left++
 		right--
 	}
-
 	return true
 }
 
-// 0 ~ 9 -> 48 ~ 57
-// A ~ Z -> 65 ~ 90
-// a ~ z -> 97 ~ 122
-func valid(b byte) bool {
+// '0': 48
+// 'A': 65
+// 'a': 97
+func isValid(b byte) bool {
 	return (b >= 48 && b <= 57) ||
-		(b >= 65 && b <= 90) ||
 		(b >= 97 && b <= 122)
 }
