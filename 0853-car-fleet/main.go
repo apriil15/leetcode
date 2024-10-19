@@ -12,21 +12,23 @@ func main() {
 // time: O(nlogn)
 // space: O(n)
 func carFleet(target int, position []int, speed []int) int {
-	pairs := make([]Pair, 0, len(position))
-	for i := 0; i < len(position); i++ {
-		pairs = append(pairs, Pair{
+	cars := make([]car, 0, len(position))
+	for i := range len(position) {
+		cars = append(cars, car{
 			position: position[i],
 			speed:    speed[i],
 		})
 	}
 
-	slices.SortFunc(pairs, func(p1, p2 Pair) int {
-		return cmp.Compare(p1.position, p2.position)
+	slices.SortFunc(cars, func(c1, c2 car) int {
+		return cmp.Compare(c1.position, c2.position)
 	})
 
 	var stack []float32
-	for i := len(pairs) - 1; i >= 0; i-- {
-		stack = append(stack, float32(target-pairs[i].position)/float32(pairs[i].speed))
+	for i := len(cars) - 1; i >= 0; i-- {
+		costTime := float32(target-cars[i].position) / float32(cars[i].speed)
+		stack = append(stack, costTime)
+
 		if len(stack) >= 2 && stack[len(stack)-1] <= stack[len(stack)-2] {
 			stack = stack[:len(stack)-1]
 		}
@@ -34,7 +36,7 @@ func carFleet(target int, position []int, speed []int) int {
 	return len(stack)
 }
 
-type Pair struct {
+type car struct {
 	position int
 	speed    int
 }
