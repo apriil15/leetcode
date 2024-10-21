@@ -4,7 +4,7 @@ func main() {
 
 }
 
-// time: O(logn)
+// time: O(log n)
 // space: O(1)
 func search(nums []int, target int) int {
 	left := 0
@@ -12,15 +12,13 @@ func search(nums []int, target int) int {
 
 	for left <= right {
 		mid := left + (right-left)/2
-
-		if nums[mid] == target {
-			return mid
+		if nums[mid] < target {
+			left = mid + 1
 		} else if nums[mid] > target {
 			right = mid - 1
 		} else {
-			left = mid + 1
+			return mid
 		}
 	}
-
 	return -1
 }
