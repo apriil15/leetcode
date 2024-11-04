@@ -1,25 +1,17 @@
 package main
 
-import (
-	"fmt"
-)
-
 func main() {
-	fmt.Println(lengthOfLongestSubstring("dvdf"))
+
 }
 
 // time: O(n)
 // space: O(n)
 func lengthOfLongestSubstring(s string) int {
-	if len(s) == 0 {
-		return 0
-	}
-
-	set := make(map[byte]struct{})
 	left := 0
-	result := 0
-
+	res := 0
+	set := make(map[byte]struct{})
 	for i := 0; i < len(s); i++ {
+		// delete until not exist
 		for {
 			if _, ok := set[s[i]]; ok {
 				delete(set, s[left])
@@ -30,11 +22,7 @@ func lengthOfLongestSubstring(s string) int {
 		}
 
 		set[s[i]] = struct{}{}
-
-		if len(set) > result {
-			result = len(set)
-		}
+		res = max(res, len(set))
 	}
-
-	return result
+	return res
 }

@@ -1,6 +1,10 @@
 package main
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
 
 func Test_lengthOfLongestSubstring(t *testing.T) {
 	type args struct {
@@ -20,9 +24,9 @@ func Test_lengthOfLongestSubstring(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := lengthOfLongestSubstring(tt.args.s); got != tt.want {
-				t.Errorf("lengthOfLongestSubstring() = %v, want %v", got, tt.want)
-			}
+			got := lengthOfLongestSubstring(tt.args.s)
+
+			assert.Equal(t, got, tt.want, got)
 		})
 	}
 }
