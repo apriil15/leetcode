@@ -7,34 +7,28 @@ func main() {
 // time: O(26n)
 // space: O(26)
 func characterReplacement(s string, k int) int {
-	m := make(map[byte]int, 26)
-	result := 0
 	left := 0
+	count := make(map[byte]int, 26) // record char count
+	res := 0
+	for i := 0; i < len(s); i++ {
+		count[s[i]]++
 
-	for right := 0; right < len(s); right++ {
-		m[s[right]]++
-
-		for (right-left+1)-getMaxCount(m) > k {
-			m[s[left]]--
+		// (i-left+1)-maxCount(count) means the count need to replace
+		for (i-left+1)-maxCount(count) > k {
+			count[s[left]]--
 			left++
 		}
 
-		if (right - left + 1) > result {
-			result = right - left + 1
-		}
+		res = max(res, i-left+1)
 	}
-
-	return result
+	return res
 }
 
 // time: O(26)
-func getMaxCount(m map[byte]int) int {
-	result := 0
-	for _, n := range m {
-		if n > result {
-			result = n
-		}
+func maxCount(m map[byte]int) int {
+	res := 0
+	for _, v := range m {
+		res = max(res, v)
 	}
-
-	return result
+	return res
 }
